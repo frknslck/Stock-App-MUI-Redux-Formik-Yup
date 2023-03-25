@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography"
 import LockIcon from "@mui/icons-material/Lock"
 import image from "../assets/result.svg"
 import { Link } from "react-router-dom"
-import { Formik, Form } from "formik"
+import { Formik } from "formik"
 import useAuthCall from "../hooks/useAuthCall"
 import LoginForm, { loginScheme } from "../components/LoginForm"
 

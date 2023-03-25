@@ -1,8 +1,13 @@
-
+import { Button, Typography } from "@mui/material"
 
 const Firms = () => {
   return (
-    <div>Firms</div>
+    <div>
+      <Typography variant="h4" color="error" mb={3}>Firm</Typography>
+      <Button variant="contained"> New Firm </Button>
+
+      
+    </div>
   )
 }
 
