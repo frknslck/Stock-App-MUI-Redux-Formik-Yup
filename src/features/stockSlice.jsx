@@ -31,7 +31,7 @@ const stockSlice = createSlice({
 
 export const {
   fetchStart,
-  getSuccessi,
+  getSuccess,
   fetchFail,
 } = stockSlice.actions;
 export default stockSlice.reducer;
