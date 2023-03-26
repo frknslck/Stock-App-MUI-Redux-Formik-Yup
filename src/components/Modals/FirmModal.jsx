@@ -7,17 +7,22 @@ import {
 import {Button, TextField} from "@mui/material"
 import useStockCall from "../../hooks/useStockCall"
 
-export default function BrandAdd({
+export default function FirmAdd({
   open,
   setOpen,
   info,
   setInfo,
 }) {
-  const {postStockData} = useStockCall()
+  
+  const {postStockData, putStockData} = useStockCall()
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    postStockData("brands", info)
+    if (info.id) {
+      putStockData("firms", info)
+    } else {
+      postStockData("firms", info)
+    }
     setOpen(false)
     setInfo({})
   }
@@ -44,13 +49,35 @@ export default function BrandAdd({
             sx={flexColumn}
           >
             <TextField
-              label='Brand Name'
+              label='Firm Name'
               name='name'
               id='name'
               type='text'
               variant='outlined'
               required
               value={info?.name || ""}
+              onChange={handleChange}
+            />
+
+            <TextField
+              label='Phone'
+              name='phone'
+              id='phone'
+              type='tel'
+              required
+              variant='outlined'
+              value={info?.phone || ""}
+              onChange={handleChange}
+            />
+
+            <TextField
+              label='Address'
+              name='address'
+              id='address'
+              type='text'
+              required
+              variant='outlined'
+              value={info?.address || ""}
               onChange={handleChange}
             />
 

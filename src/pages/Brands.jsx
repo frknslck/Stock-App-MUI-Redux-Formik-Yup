@@ -5,7 +5,7 @@ import {useSelector} from "react-redux"
 import useStockCall from "../hooks/useStockCall"
 import BrandCard from "../components/Cards/BrandCard"
 import {flex} from "../styles/globalStyles"
-import BrandAdd from "../components/Modals/BrandAdd"
+import BrandModal from "../components/Modals/BrandModal"
 
 const Brands = () => {
   const [open, setOpen] = useState(false)
@@ -32,7 +32,7 @@ const Brands = () => {
       >
         New Brand
       </Button>
-      <BrandAdd
+      <BrandModal
         open={open}
         setOpen={setOpen}
         info={info}
@@ -41,7 +41,12 @@ const Brands = () => {
       <Grid container sx={flex}>
         {brands?.map((brand) => (
           <Grid item key={brand.id}>
-            <BrandCard brand={brand} />
+            <BrandCard 
+              brand={brand}
+              open={open}
+              setOpen={setOpen}
+              info={info}
+              setInfo={setInfo}/>
           </Grid>
         ))}
       </Grid>

@@ -5,7 +5,7 @@ import {useSelector} from "react-redux"
 import useStockCall from "../hooks/useStockCall"
 import FirmCard from "../components/Cards/FirmCard"
 import {flex} from "../styles/globalStyles"
-import FirmAdd from "../components/Modals/FirmAdd"
+import FirmModal from "../components/Modals/FirmModal"
 
 const Firms = () => {
   const [open, setOpen] = useState(false)
@@ -32,16 +32,20 @@ const Firms = () => {
       >
         New Firm
       </Button>
-      <FirmAdd
+      <FirmModal
         open={open}
         setOpen={setOpen}
         info={info}
-        setInfo={setInfo}
-      />
+        setInfo={setInfo}/>
       <Grid container sx={flex}>
         {firms?.map((firm) => (
           <Grid item key={firm.id}>
-            <FirmCard firm={firm} />
+            <FirmCard 
+              firm={firm} 
+              open={open}
+              setOpen={setOpen}
+              info={info}
+              setInfo={setInfo}/>
           </Grid>
         ))}
       </Grid>

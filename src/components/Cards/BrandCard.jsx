@@ -10,8 +10,19 @@ import EditIcon from "@mui/icons-material/Edit"
 import {btnStyle, flex} from "../../styles/globalStyles"
 import useStockCall from "../../hooks/useStockCall"
 
-export default function FirmCard({brand}) {
+export default function FirmCard({brand, setOpen, setInfo}) {
   const {deleteStockData} = useStockCall()
+
+  const handleEditModal = () => {
+    setOpen(true)
+    setInfo({
+      id: brand.id,
+      name: brand.name,
+      phone: brand.phone,
+      address: brand.address,
+      image: brand.image
+    })
+  }
 
   return (
     <Card
@@ -32,9 +43,6 @@ export default function FirmCard({brand}) {
         >
           {brand?.name}
         </Typography>
-        <Typography variant='body2' color='text.secondary'>
-          {brand?.address}
-        </Typography>
       </CardContent>
       <CardMedia
         image={brand?.image}
@@ -47,12 +55,10 @@ export default function FirmCard({brand}) {
         component='img'
         alt='brand-img'
       />
-
-      <Typography variant='body2' color='text.secondary'>
-        Phone: {brand?.phone}
-      </Typography>
       <CardActions sx={flex}>
-        <EditIcon sx={btnStyle} />
+        <EditIcon 
+          sx={btnStyle}
+          onClick={handleEditModal} />
         <DeleteOutlineIcon
           sx={btnStyle}
           onClick={() => deleteStockData("brands", brand.id)}
