@@ -7,11 +7,11 @@ import CardMedia from "@mui/material/CardMedia"
 import Typography from "@mui/material/Typography"
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline"
 import EditIcon from "@mui/icons-material/Edit"
-import { btnStyle, flex } from "../styles/globalStyles"
-import useStockCall from "../hooks/useStockCall"
+import {btnStyle, flex} from "../../styles/globalStyles"
+import useStockCall from "../../hooks/useStockCall"
 
-export default function FirmCard({ firm }) {
-  const { deleteStockData } = useStockCall()
+export default function FirmCard({brand}) {
+  const {deleteStockData} = useStockCall()
 
   return (
     <Card
@@ -25,28 +25,37 @@ export default function FirmCard({ firm }) {
       }}
     >
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {firm?.name}
+        <Typography
+          gutterBottom
+          variant='h5'
+          component='div'
+        >
+          {brand?.name}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {firm?.address}
+        <Typography variant='body2' color='text.secondary'>
+          {brand?.address}
         </Typography>
       </CardContent>
       <CardMedia
-        image={firm?.image}
-        sx={{ p: 1, objectFit: "contain", height: "130px", my:"1.5rem"  }}
-        component="img"
-        alt="firm-img"
+        image={brand?.image}
+        sx={{
+          p: 1,
+          objectFit: "contain",
+          height: "130px",
+          my: "1.5rem",
+        }}
+        component='img'
+        alt='brand-img'
       />
 
-      <Typography variant="body2" color="text.secondary">
-        Phone: {firm?.phone}
+      <Typography variant='body2' color='text.secondary'>
+        Phone: {brand?.phone}
       </Typography>
       <CardActions sx={flex}>
         <EditIcon sx={btnStyle} />
         <DeleteOutlineIcon
           sx={btnStyle}
-          onClick={() => deleteStockData("firms", firm.id)}
+          onClick={() => deleteStockData("brands", brand.id)}
         />
       </CardActions>
     </Card>

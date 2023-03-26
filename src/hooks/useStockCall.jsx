@@ -31,15 +31,15 @@ const useStockCall = () => {
         }
       }
 
-      const postStockData = async(url) => {
+      const postStockData = async(url, info) => {
         dispatch(fetchStart())
         try {
-            const { data } = await axiosWithToken.post(`stock/${url}/`)
-            toastSuccessNotify(`${url} with ${data.id} successfully added`)
+            await axiosWithToken.post(`stock/${url}/`, info)
+            toastSuccessNotify(`${url} with name ${info?.name} successfully added`)
             getStockData(url)
         } catch (error) {
             console.log(error);
-            toastSuccessNotify(`${url} with can not be added`)
+            toastSuccessNotify(`${url} with name ${info?.name} can not be added`)
             dispatch(fetchFail())
         }
       }
