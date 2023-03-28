@@ -3,9 +3,9 @@ import Typography from "@mui/material/Typography"
 import {useEffect, useState} from "react"
 import {useSelector} from "react-redux"
 import useStockCall from "../hooks/useStockCall"
-import BrandCard from "../components/Cards/BrandCard"
+import BrandCard from "../components/cards/BrandCard"
 import {flex} from "../styles/globalStyles"
-import BrandModal from "../components/Modals/BrandModal"
+import BrandModal from "../components/modals/BrandModal"
 
 const Brands = () => {
   const [open, setOpen] = useState(false)
