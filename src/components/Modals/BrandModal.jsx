@@ -3,7 +3,7 @@ import Modal from "@mui/material/Modal"
 import {
   flexColumn,
   modalStyle,
-} from "../../styles/globalStyles"
+} from "../../styles/globalStyle"
 import {Button, TextField} from "@mui/material"
 import useStockCall from "../../hooks/useStockCall"
 

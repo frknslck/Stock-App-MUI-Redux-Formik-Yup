@@ -7,7 +7,7 @@ import CardMedia from "@mui/material/CardMedia"
 import Typography from "@mui/material/Typography"
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline"
 import EditIcon from "@mui/icons-material/Edit"
-import {btnStyle, flex} from "../../styles/globalStyles"
+import {btnStyle, flex} from "../../styles/globalStyle"
 import useStockCall from "../../hooks/useStockCall"
 
 export default function FirmCard({brand, setOpen, setInfo}) {

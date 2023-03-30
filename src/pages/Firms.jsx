@@ -4,7 +4,7 @@ import {useEffect, useState} from "react"
 import {useSelector} from "react-redux"
 import useStockCall from "../hooks/useStockCall"
 import FirmCard from "../components/cards/FirmCard"
-import {flex} from "../styles/globalStyles"
+import {flex} from "../styles/globalStyle"
 import FirmModal from "../components/modals/FirmModal"
 
 const Firms = () => {

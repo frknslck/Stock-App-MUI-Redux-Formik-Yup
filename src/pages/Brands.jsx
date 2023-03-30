@@ -4,7 +4,7 @@ import {useEffect, useState} from "react"
 import {useSelector} from "react-redux"
 import useStockCall from "../hooks/useStockCall"
 import BrandCard from "../components/cards/BrandCard"
-import {flex} from "../styles/globalStyles"
+import {flex} from "../styles/globalStyle"
 import BrandModal from "../components/modals/BrandModal"
 
 const Brands = () => {
