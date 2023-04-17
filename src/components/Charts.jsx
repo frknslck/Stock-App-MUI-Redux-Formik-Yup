@@ -1,54 +1,49 @@
-import React from "react";
-import { LineChart } from "@tremor/react";
-import { Card, Grid, Typography } from "@mui/material";
-import { useSelector } from "react-redux";
+import { Card, Title, LineChart } from "@tremor/react"
+import { useSelector } from "react-redux"
+import { Grid } from "@mui/material"
+const dataFormatter = (number) =>
+  `$${Intl.NumberFormat("us").format(number).toString()}`
 
 const Charts = () => {
-  const { sales, purchases } = useSelector((state) => state.stock);
+  const { sales, purchases } = useSelector((state) => state.stock)
 
-  const dataFormatter = (number) =>
-    `$${Intl.NumberFormat("us").format(number).toString()}`;
-
-  const salesData = sales?.map((item) => ({
+  const salesData = sales.map((item) => ({
     date: item.createds,
     sales: Number(item.price_total),
-  }));
+  }))
 
   const purchasesData = purchases?.map((item) => ({
     date: item.createds,
     purchases: Number(item.price_total),
-  }));
+  }))
 
   return (
     <Grid container justifyContent="center" spacing={2} mt={3}>
       <Grid item xs={12} sm={12} md={6}>
-        <Card sx={{ p: 2 }}>
-          <Typography>Daily Sales (USD)</Typography>
+        <Card>
+          <Title>Total Sales</Title>
           <LineChart
             data={salesData}
-            dataKey="date"
+            index="date"
             categories={["sales"]}
             colors={["blue"]}
             valueFormatter={dataFormatter}
-            marginTop="mt-6"
           />
         </Card>
       </Grid>
       <Grid item xs={12} sm={12} md={6}>
         <Card sx={{ p: 2 }}>
-          <Typography>Daily Purchase (USD)</Typography>
+          <Title>Total Purchases</Title>
           <LineChart
+            index="date"
             data={purchasesData}
-            dataKey="date"
             categories={["purchases"]}
             colors={["red"]}
             valueFormatter={dataFormatter}
-            marginTop="mt-6"
           />
         </Card>
       </Grid>
     </Grid>
-  );
-};
-
-export default Charts;
+  )
+}
+export default Charts
