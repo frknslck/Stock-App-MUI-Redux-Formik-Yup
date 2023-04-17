@@ -1,6 +1,7 @@
 import Box from "@mui/material/Box"
 import TextField from "@mui/material/TextField"
 import LoadingButton from "@mui/lab/LoadingButton"
+
 import { Form } from "formik"
 import { useSelector } from "react-redux"
 import { object, string } from "yup"
@@ -16,7 +17,7 @@ export const loginScheme = object({
     .matches(/\d+/, "Password bir sayı içermelidir")
     .matches(/[a-z]/, "Password bir küçük harf içermelidir")
     .matches(/[A-Z]/, "Password bir büyük harf içermelidir")
-    .matches(/[!,?{}><%&$#£+-.*]+/, "Password bir özel karakter içermelidir"),
+    .matches(/[!,?{}><%&$#£+-.]+/, "Password bir özel karakter içermelidir"),
 })
 
 const LoginForm = ({ values, handleChange, errors, touched, handleBlur }) => {

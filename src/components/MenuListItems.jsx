@@ -11,6 +11,7 @@ import StarsIcon from "@mui/icons-material/Stars"
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount"
 import { useNavigate } from "react-router-dom"
+
 const icons = [
   {
     icon: <DashboardIcon />,
@@ -49,11 +50,11 @@ const icons = [
   },
 ]
 
-const iconStyle ={
+const iconStyle = {
   color: "white",
-  "& .MuiSvgIcon-root" : {color: "white"},
-  "&:hover": {color :"red"},
-  "&:hover .MuiSvgIcon-root": {color: "red"}
+  "& .MuiSvgIcon-root": { color: "white" },
+  "&:hover": { color: "red" },
+  "&:hover .MuiSvgIcon-root": { color: "red" },
 }
 
 const MenuListItems = () => {
@@ -63,20 +64,18 @@ const MenuListItems = () => {
       <List>
         {icons?.map((item, index) => (
           <ListItem key={index} disablePadding>
-            {item?.url.includes("http") && 
-            <ListItemButton sx={iconStyle} to={item?.url} target="_blank">
-              <ListItemIcon>
-                {item?.icon}
-              </ListItemIcon>
-              <ListItemText primary={item?.title} />
-            </ListItemButton>}
-            {!item?.url.includes("http") && 
-            <ListItemButton sx={iconStyle} onClick={() => navigate(item?.url)}>
-              <ListItemIcon>
-                {item?.icon}
-              </ListItemIcon>
-              <ListItemText primary={item?.title} />
-            </ListItemButton>}
+            {item.url.includes("http") && (
+              <ListItemButton to={item.url} target="_blank" sx={iconStyle}>
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText primary={item.title} />
+              </ListItemButton>
+            )}
+            {!item.url.includes("http") && (
+              <ListItemButton onClick={() => navigate(item.url)} sx={iconStyle}>
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText primary={item.title} />
+              </ListItemButton>
+            )}
           </ListItem>
         ))}
       </List>

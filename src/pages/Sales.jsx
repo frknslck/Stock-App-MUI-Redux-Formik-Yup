@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import DeleteIcon from "@mui/icons-material/Delete"
 import useStockCall from "../hooks/useStockCall"
+
 import { DataGrid, GridActionsCellItem, GridToolbar } from "@mui/x-data-grid"
 import { btnStyle } from "../styles/globalStyle"
 import SaleModal from "../components/modals/SaleModal"
@@ -33,6 +34,7 @@ const Sales = () => {
       headerAlign: "center",
       align: "center",
     },
+
     {
       field: "brand",
       headerName: "Brand",
@@ -99,6 +101,7 @@ const Sales = () => {
       },
     },
   ]
+
   useEffect(() => {
     getProCatBrand()
     getStockData("sales")

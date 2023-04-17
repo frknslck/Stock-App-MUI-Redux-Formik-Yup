@@ -1,8 +1,8 @@
 import { Typography } from "@mui/material"
 import { useEffect } from "react"
-import useStockCall from "../hooks/useStockCall"
-import KpiCards from "../components/KpiCards"
 import Charts from "../components/Charts"
+import KpiCards from "../components/KpiCards"
+import useStockCall from "../hooks/useStockCall"
 
 const Home = () => {
   const { getStockData } = useStockCall()

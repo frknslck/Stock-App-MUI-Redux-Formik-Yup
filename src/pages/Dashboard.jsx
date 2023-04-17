@@ -73,14 +73,14 @@ function Dashboard(props) {
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
       >
-
+        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Drawer
           container={container}
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true,
+            keepMounted: true, // Better open performance on mobile.
           }}
           sx={{
             display: { xs: "block", sm: "none" },
@@ -100,7 +100,7 @@ function Dashboard(props) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              backgroundColor: blueGrey[900],              
+              backgroundColor: blueGrey[900],
             },
           }}
           open
@@ -117,7 +117,7 @@ function Dashboard(props) {
         }}
       >
         <Toolbar />
-        <Outlet/>
+        <Outlet />
       </Box>
     </Box>
   )

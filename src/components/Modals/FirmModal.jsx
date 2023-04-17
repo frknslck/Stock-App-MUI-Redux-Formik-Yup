@@ -1,19 +1,24 @@
 import Box from "@mui/material/Box"
 import Modal from "@mui/material/Modal"
-import {
-  flexColumn,
-  modalStyle,
-} from "../../styles/globalStyle"
-import {Button, TextField} from "@mui/material"
+import { modalStyle } from "../../styles/globalStyle"
+import TextField from "@mui/material/TextField"
+import { Button } from "@mui/material"
 import useStockCall from "../../hooks/useStockCall"
 
-export default function FirmAdd({
-  open,
-  setOpen,
-  info,
-  setInfo,
-}) {
-  const {postStockData, putStockData} = useStockCall()
+export default function FirmModal({ open, handleClose, info, setInfo }) {
+  //   const [info, setInfo] = useState({
+  //     name: "",
+  //     phone: "",
+  //     address: "",
+  //     image: "",
+  //   })
+
+  const { postStockData, putStockData } = useStockCall()
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setInfo({ ...info, [name]: value })
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -22,15 +27,9 @@ export default function FirmAdd({
     } else {
       postStockData("firms", info)
     }
-    setOpen(false)
-    setInfo({})
-  }
 
-  console.log(info)
-
-  const handleChange = (e) => {
-    const {name, value} = e.target
-    setInfo({...info, [name]: value})
+    handleClose()
+    setInfo({ name: "", phone: "", address: "", image: "" })
   }
 
   return (
@@ -38,64 +37,61 @@ export default function FirmAdd({
       <Modal
         open={open}
         onClose={() => {
-          setOpen(false)
-          setInfo({})
+          handleClose()
+          setInfo({ name: "", phone: "", address: "", image: "" })
         }}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
       >
         <Box sx={modalStyle}>
           <Box
-            component='form'
+            sx={{ display: "flex", flexDirection: "column", gap: 2 }}
+            component="form"
             onSubmit={handleSubmit}
-            sx={flexColumn}
           >
             <TextField
-              label='Firm Name'
-              name='name'
-              id='name'
-              type='text'
-              variant='outlined'
+              label="Firm Name"
+              name="name"
+              id="name"
+              type="text"
+              variant="outlined"
               required
-              value={info?.name || ""}
+              value={info?.name}
+              onChange={handleChange}
+            />
+            <TextField
+              label="Phone"
+              name="phone"
+              id="phone"
+              type="tel"
+              variant="outlined"
+              required
+              value={info?.phone}
+              onChange={handleChange}
+            />
+            <TextField
+              label="Address"
+              name="address"
+              id="address"
+              type="text"
+              variant="outlined"
+              required
+              value={info?.address}
               onChange={handleChange}
             />
 
             <TextField
-              label='Phone'
-              name='phone'
-              id='phone'
-              type='tel'
+              label="Image"
+              name="image"
+              id="image"
+              type="url"
+              variant="outlined"
               required
-              variant='outlined'
-              value={info?.phone || ""}
+              value={info?.image}
               onChange={handleChange}
             />
 
-            <TextField
-              label='Address'
-              name='address'
-              id='address'
-              type='text'
-              required
-              variant='outlined'
-              value={info?.address || ""}
-              onChange={handleChange}
-            />
-
-            <TextField
-              label='Image'
-              name='image'
-              id='image'
-              type='url'
-              required
-              variant='outlined'
-              value={info?.image || ""}
-              onChange={handleChange}
-            />
-            <Button
-              type='submit'
-              variant='contained'
-              size='large'
-            >
+            <Button type="submit" variant="contained">
               Submit Firm
             </Button>
           </Box>
